@@ -1,0 +1,48 @@
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; /*inherit from the body*/
+}
+
+
+html {
+    /* font-size: 10px; (10/16=.625) */ //therefore, not a typography
+    //so this is what 1rem
+    font-size: 62.5%; 
+
+    //MEDIA QUERIES WORK IN DESCENDING ORDER
+
+    @include respond(tap-land){ // width < 1200 ?
+        font-size: 56.25%;
+    }
+
+    @include respond(tab-port){//width < 900 ?
+        font-size: 50%;
+    }
+    
+    // @include respond(phone){ //width <600 ?
+    //    font-size: 30%;
+    // }// not necessary because it is the same font-size with the tab-port
+
+    @include respond(big-desktop){ //widht > 1200
+        font-size: 75%; //1rem =12, 12/16
+    }
+
+}
+
+body{
+    box-sizing: border-box;
+    padding: 3rem;
+
+
+    @include respond(tab-port){
+        padding: 0;
+    }
+}
+
+::selection{
+    background-color: $color-primary;
+    color: $color-white;
+}
